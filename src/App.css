@@ -1,0 +1,373 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,body,#root{
+  height: 100%;
+}
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.layout{
+  height: 100%;
+
+}
+.side{
+  display: flex;
+  height: 100%;
+
+}
+.side-nav{
+  width: 350px;
+  height: 100%;
+  background-color: #363740;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.side-nav-header{
+    font-weight: 700;
+    color: white;
+    width: 100%;
+    font-size: 25px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+.side-nav-link{
+  color: #696B75;
+  height: 70px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 50px;
+  
+}
+.side-nav-link span{
+  margin-left: 20px;
+}
+.side-nav-link:hover{
+  color: white;
+  background-color: #3E4049;
+}
+.side-nav-link:hover svg{
+  stroke: white;
+}
+.active{
+  color: white;
+  background-color: #3E4049;
+}
+.active svg{
+  stroke: white;
+}
+.top-nav{
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 50px;
+  padding-right: 70px;
+  /* box-shadow: 0px 0px 15px rgba(0, 0, 0, .5); */
+    position: relative;
+    z-index: 20;
+    background-color: white;
+}
+
+.route-nav{
+  font-weight: 700;
+  font-size: 30px;
+}
+.devider-vertical{
+  border: 1px solid grey;
+  margin-left: 10px;
+  height: 30px;
+  width: 1px;
+  /* margin-right: px; */
+}
+.top-nav-left{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.top-nav-left p{
+  /* margin-left: 30px; */
+  margin-bottom: 5px;
+}
+.button-show-nav{
+  display: none;
+  margin-right: 30px;
+}
+.top-nav-right{
+  display: flex;
+  width: 200px;
+  align-items: center;
+  justify-content: space-between;
+}
+.top-nav-right p{
+  margin-bottom: 5px;
+}
+.nav-and-content{
+  flex: 1;
+}
+.layout-content{
+  overflow: hidden;
+  /* border: 1px solid salmon; */
+  height: calc(100% - 80px);
+  overflow-y: scroll;
+}
+
+.center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* ======================LOGIN====================== */
+.border-login{
+  background-color:white;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, .3);
+  /* height:500px; */
+  width:350px;
+  border-radius: 10px;
+  padding: 30px;
+}
+.header-login-text{
+  font-weight: 700;
+  font-size: 25px;
+  margin-bottom: 5px;
+}
+.header-login-caption{
+  color: gray;
+}
+.border-login input{
+  margin-top: 5px;
+  width: 100%;
+  height: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
+  
+}
+.email-input{
+  margin-top: 20px;
+}
+.password-input{
+  margin-top: 20px;
+
+}
+
+.button-login{
+  margin-top: 20px;
+  width: 100%;
+  height: 40px;
+  background-color: #3751FF;
+  color: white;
+  border: none;
+  border-radius: 10px;
+}
+
+
+.home{
+  /* display: flex;
+    width: 100%; */
+    background-color: #F7F8FC;
+    padding: 50px;
+}
+
+/* ===========TOP============== */
+
+.top{
+  display: flex;
+  justify-content: space-between;
+}
+.top-card{
+  width: 230px;
+  height: 110px;
+  border: 1px solid #F7F8FC;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+}
+
+.top-card:hover {
+  border: 2px solid #6276FF;
+  color: #6276FF;
+}
+.top-card p:nth-child(2){
+  /* margin-top: 1px; */
+  font-size: 35px;
+  font-weight: 700;
+}
+
+/* ==================MID============= */
+.mid{
+  display: flex;
+  /* border: 1px solid; */
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.chart{
+  width: 70%;
+  background-color: white;
+  margin-right: 2px;
+  padding: 10px;
+}
+.chart-title{
+  margin-left: 17px;
+  margin-top: 15px;
+}
+.chart-title h1{
+  font-weight: 700;
+  font-size: 20px;
+}
+.chart-title p{
+  font-size: 13px;
+  margin-top: 5px;
+}
+.side-chart{
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.side-chart .side-card:nth-child(1),.side-chart .side-card:nth-child(4),.side-chart .side-card:nth-child(2),.side-chart .side-card:nth-child(3){
+  margin-bottom: 2px;
+}
+.side-card{
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+/* .side-card:hover{
+  border: 2px solid #3751FF;
+}
+.side-card:hover{
+  color: #3751FF;
+} */
+
+.side-card p:nth-child(2){
+  margin-top: 5px;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+/* ==================BOTTOM============== */
+
+.bottom{
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 20px;
+  /* margin-bottom: 20px; */
+}
+.bottom-card{
+  /* border: 1px solid; */
+  border-radius: 5px;
+  background-color: white;
+  /* height: 200px; */
+  flex: 1;
+  border-radius: 5px;
+  padding-top: 20px;
+  /* padding-bottom: 20px; */
+}
+.header-card-bottom{
+  display: flex;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 50px;
+}
+.view-all{
+  color: #3751FF;
+}
+.heder-card-bottom-left p:nth-child(1){
+  font-weight: 700;
+}
+.heder-card-bottom-left p:nth-child(2){
+  font-size: 13px;
+}
+.bottom-list{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+ height: 60px;
+ border-bottom: 1.5px solid #ccc;
+}
+
+
+/* ================VIEW ALL=============== */
+.viewTask{
+  overflow-y: scroll;
+  height: 300px;
+}
+/* =================RESPONSIVE================ */
+
+@media only screen and (max-width: 1400px) {
+  .side-nav {
+    z-index: 9;
+    position: absolute;
+    transform: translateX(-400px);
+    transition: .3s ease-in-out;
+  }
+  .show-nav{
+    transform: translateX(0px);
+  }
+  .button-show-nav{
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 1125px) {
+  .top{
+    flex-direction: column;
+  }
+  .top-card{
+    width: 100%;
+  }
+  .mid{
+    flex-direction: column;
+  }
+  .chart{
+    width: 100%;
+  }
+  .side-chart{
+    width: 100%;
+    margin-top: 10px;
+  }
+  .side-card{
+    height: 90px;
+  }
+  .bottom{
+    flex-direction: column;
+  }
+
+}
+.small-tabel{
+  display: none;
+}
+@media only screen and (max-width: 1000px) {
+  .small-tabel{
+    display: flex;
+  }
+  .big-tabel{
+    display: none;
+  }
+  .tickets .content{
+    overflow-y: scroll;
+}
+}
