@@ -5,9 +5,15 @@ Using React 18.2.0 Version
 How to start npm run dev
 
 
-Berikut Link [Demo](https://665bd78ce7f811e25cef4ee1--coruscating-liger-407c34.netlify.app/) dari technical test React Js Developer
+Berikut Link [Demo](https://665bd9ac6690d5e379cfb854--storied-pavlova-331498.netlify.app/) dari technical test React Js Developer
 
+admin:
+admin@gmail.com
+12345678
 
+guest:
+guest@gmail.com
+12345678
 
 To use this project, follow these steps:
 

@@ -16,8 +16,8 @@ query MyQuery($password: String = "", $email: String = "") {
   `
 
 const Login = ({dataLogin,setDataLogin}) => {
-    const [email, setEmail] = useState('admin@gmail.com');
-    const [password, setPassword] = useState('12345678');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [errors, setErrors] = useState('' );
     const navigate = useNavigate()
 
