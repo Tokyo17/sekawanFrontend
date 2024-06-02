@@ -4,8 +4,10 @@ Using React 18.2.0 Version
 [Node.js](https://nodejs.org/) (v20.13.1)
 How to start npm run dev
 
+My [Repo](https://github.com/Tokyo17/sekawanFrontend)
 
 Berikut Link [Demo](https://665bd9ac6690d5e379cfb854--storied-pavlova-331498.netlify.app/) dari technical test React Js Developer
+
 
 admin:
 admin@gmail.com
