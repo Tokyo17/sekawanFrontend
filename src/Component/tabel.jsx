@@ -1,15 +1,16 @@
 import Label from "./label"
+import ModalCreateTickets from "./modalCreateTickets"
 
-const Tabel=({data})=>{
+const Tabel=({data,isOpen,setIsopen,setDataApprove,dataLogin})=>{
     return(
         
         <div className="content  h-4/5">
 
-                 
 
         {data?.map(v=>(
                       
         <div className="tabel flex mb-5 small-tabel">
+            {/* <ModalCreateTickets   isOpen={isOpen} setIsopen={setIsopen}/> */}
                 <div>             
                      <div className="h-[50px] w-[50px] mr-2.5 rounded-full overflow-hidden flex justify-center items-center">
                             <img className="transform scale-150"  src={v.url} />
@@ -43,8 +44,15 @@ const Tabel=({data})=>{
             <th>Date</th>
             <th>Priority</th>
           </tr>
+          
             {data?.map(v=>(
-                <tr>
+                <tr onClick={()=>{
+                    if(dataLogin.level=="admin"){
+                    setIsopen(true)
+                    setDataApprove(v)
+                    }
+                }}>
+                    
                 <td>
                     <div className="flex h-10 items-center">
                         <div className="h-[50px] w-[50px] mr-2.5 rounded-full overflow-hidden flex justify-center items-center">

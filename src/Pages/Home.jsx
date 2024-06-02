@@ -44,6 +44,7 @@ query MyQuery {
 const Home=({dataLogin,setDataLogin})=>{
   
   const[isOpen,setIsopen]=useState(false)
+  const[date,setDate]=useState('')
   const[isOpenView,setIsopenView]=useState(false)
   const{data,loading}=useQuery(GET_DATA,{
     onCompleted:()=>{
@@ -61,6 +62,18 @@ const Home=({dataLogin,setDataLogin})=>{
   })
 
   useEffect(()=>{
+    let date = new Date();
+let options = { 
+    day: '2-digit',
+    month: 'long',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: true
+};
+let formattedDate = date.toLocaleString('en-US', options);
+setDate(formattedDate)
+
     get_task()
   },[])
 
@@ -75,18 +88,32 @@ const Home=({dataLogin,setDataLogin})=>{
       },
       text:{
             color:state?"white":""
-      },
-      backgroundContainer:{
-        background:state?"#373737":""
+      },     
+       backgroundContainer:{
+        background:state?"#373737":"",
+        height:loading||loadingTask?"100%":"",
+        display:loading||loadingTask?"flex":"",
+        justifyContent:loading||loadingTask?"center":"",
+        alignItems:loading||loadingTask ?"center":""
       }
   }
 
       return (
-      <Layout title="Overview" dataLogin={dataLogin} setDataLogin={setDataLogin}>
-        <div style={style.backgroundContainer} className='home'>
+      <Layout title="Overview" setIsOpenView={setIsopenView}dataLogin={dataLogin} setDataLogin={setDataLogin}>
+        <div  style={style.backgroundContainer} className='home'>
           <ModalCreateTask get_task={get_task} isOpen={isOpen} setIsopen={setIsopen}/>
           <ModalViewAllTask dataTask={dataTask} isOpen={isOpenView} setIsopen={setIsopenView}/>
           {/* ===================TOP================ */}
+          {loading||loadingTask?<div style={{
+  ...style.text,
+  height: "100%",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center"
+}}>
+            {Icon.loadingXl}
+          </div>:
+          <>
           <div className='top'>
             <div style={style.backgroundText} className='top-card shadow-md'>
               <p>{loading?"loading":"Unresolved"}</p>
@@ -111,7 +138,7 @@ const Home=({dataLogin,setDataLogin})=>{
               <div style={style.backgroundText} className='chart shadow-md'>
                 <div className='chart-title'>
                   <h1>Today's trends</h1>
-                    <p>as of 25 May 2024 09:41 PM</p>
+                    <p>{date}</p>
                 </div>
                 <ReactApexChart
                   options={chartOptions.options}
@@ -204,6 +231,10 @@ const Home=({dataLogin,setDataLogin})=>{
     
             </div>
           </div>
+          </>
+          
+        }
+          
          
 
         </div>

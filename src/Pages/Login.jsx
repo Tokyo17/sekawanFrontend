@@ -1,6 +1,7 @@
 import { gql, useLazyQuery } from '@apollo/client';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Icon } from '../Layout/icon';
 
 
 
@@ -8,14 +9,15 @@ const GET_USER=gql`
 query MyQuery($password: String = "", $email: String = "") {
     user(where: {password: {_eq: $password}, email: {_eq: $email}}) {
       name
-      url
+      url,
+      level
     }
   }
   `
 
 const Login = ({dataLogin,setDataLogin}) => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('admin@gmail.com');
+    const [password, setPassword] = useState('12345678');
     const [errors, setErrors] = useState('' );
     const navigate = useNavigate()
 
@@ -24,7 +26,8 @@ const Login = ({dataLogin,setDataLogin}) => {
             if(data?.user[0]){
                 setDataLogin({
                     name:data?.user[0].name,
-                    url:data?.user[0].url
+                    url:data?.user[0].url,
+                    level:data?.user[0].level
                 })
                 navigate(`/home`)
             }
@@ -98,7 +101,7 @@ const Login = ({dataLogin,setDataLogin}) => {
                     />
                     {errors && <div style={{ color: 'red',marginTop:"5px" }}>{errors}</div>}
                 </div>
-                <button type="submit" className="button-login">Log In</button>
+                <button type="submit" className="button-login">{loading?Icon.loadingS:"Log In"}</button>
             </form>
         </div>
     );

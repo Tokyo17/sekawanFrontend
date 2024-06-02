@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom"
 import { MyContext } from "../MyContext"
 
 
-const Layout=({children,title,dataLogin})=>{
+const Layout=({children,title,dataLogin,setDataLogin,setIsOpenView})=>{
     const [show,setShow]=useState(false)
     const go=useNavigate()
     const navigate=(name)=>{
@@ -33,7 +33,7 @@ const Layout=({children,title,dataLogin})=>{
 
                 <div className={`side-nav ${show?"show-nav":""}`}> 
                 <div className="side-nav-header">Dashboard</div>
-                <div onClick={()=>navigate('/home')} className={`side-nav-link ${title=="Overview"?"active":""}`}>{Icon.overview} <span>Overview</span></div>
+                {dataLogin.level=="admin"&&<div onClick={()=>navigate('/home')} className={`side-nav-link ${title=="Overview"?"active":""}`}>{Icon.overview} <span>Overview</span></div>}
                 <div onClick={()=>navigate('/tickets')} className={`side-nav-link ${title=="Tickets"?"active":""}`}>{Icon.tickets} <span>Tickets</span></div>
                 <div className="side-nav-link">{Icon.ideas} <span>Ideas</span></div>
                 <div className="side-nav-link">{Icon.contracts} <span>Contacts</span></div>
@@ -41,7 +41,7 @@ const Layout=({children,title,dataLogin})=>{
                 <div className="side-nav-link">{Icon.articles} <span>Articles</span></div>
                 <div className="side-nav-link">{Icon.settings} <span>Settings</span></div>
                 <div className="side-nav-link">{Icon.subscription} <span>Subscription</span></div>
-                <div onClick={()=>setState(!state)} className="side-nav-link">{state? Icon.dark:Icon.light} <span>Theme</span></div>
+                <div onClick={()=>setState(!state)} className="side-nav-link theme">{state? Icon.dark:Icon.light} <span>Theme</span></div>
                 
                 </div>
 
@@ -55,10 +55,13 @@ const Layout=({children,title,dataLogin})=>{
                         </div>
                       
                         <div className="top-nav-right">
+                       {dataLogin.level=="admin"&&title=="Overview"&& <svg className="me-4" onClick={()=>setIsOpenView(true)} xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" 
+                            stroke={state?"white":"#696B75" }stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>}
                             <Notif color={state?"white":"#493FB9"}/>
                             <div className="devider-vertical"></div>
                             <p>{dataLogin.name}</p>
-                            <Avatar dataLogin={dataLogin}/>
+                            <Avatar setDataLogin={setDataLogin} dataLogin={dataLogin}/>
                         </div>
                     </div>
                     

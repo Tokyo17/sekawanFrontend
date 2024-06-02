@@ -3,6 +3,7 @@ import { useContext, useState } from "react"
 import Label from "./label"
 import { gql, useMutation } from "@apollo/client"
 import { MyContext } from "../MyContext"
+import { Icon } from "../Layout/icon"
 
 
 
@@ -89,8 +90,8 @@ const ModalCreateTask=({isOpen,setIsopen,get_task})=>{
                                         <label htmlFor="age3" className="m-2"><Label name="OPTIONAL"/></label><br/>
             </div>
             <div className="flex gap-4 justify-center">
-              <button onClick={submit} className="me-6 bg-blue-500  px-4 py-2 flex rounded text-white " >Submit</button>
-              <button onClick={()=>setIsopen(false)} className=" bg-slate-500  px-4 py-2 flex rounded text-white " >Cancel</button>
+              <button onClick={submit} className="me-6 bg-blue-500  px-4 py-2 flex rounded text-white " >{loading?Icon.loadingS:"Submit"}</button>
+              <button onClick={()=>setIsopen(false)} className=" bg-slate-500  px-4 py-2 flex rounded text-white " >{loading?Icon.loadingS:"Cancel"}</button>
             </div>
           </DialogPanel>
         </div>

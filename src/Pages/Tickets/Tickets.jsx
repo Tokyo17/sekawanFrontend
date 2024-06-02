@@ -8,6 +8,7 @@ import { useContext, useEffect, useState } from "react"
 import Label from "../../Component/label"
 import ModalCreateTickets from "../../Component/modalCreateTickets"
 import { MyContext } from "../../MyContext"
+import ModalApprove from "../../Component/modalApprove"
 
 
 
@@ -35,13 +36,15 @@ query MyQuery($where: tickets_bool_exp = {priority: {}}) {
   `
   
 const Tickets=({dataLogin,setDataLogin})=>{
+    const[isOpenApprove,setIsopenApprove]=useState(false)
+    const[dataApprove,setDataApprove]=useState('')
     const[isOpen,setIsopen]=useState(false)
     const [sort,setSort]=useState(false)
     const [filter,setFilter]=useState('')
     const [page,setPage]=useState(1)
     const [maxPage,setMaxPage]=useState(1)
     const [offset,setOffset]=useState(0)
-    const[get_max_page,{data:dataMaxPage}]=useLazyQuery(GET_MAX_PAGE,{
+    const[get_max_page,{data:dataMaxPage,loading:loadingPage}]=useLazyQuery(GET_MAX_PAGE,{
         onCompleted:()=>{
             console.log(Math.ceil(dataMaxPage?.tickets_aggregate?.aggregate?.count/6))
             setMaxPage(Math.ceil(dataMaxPage?.tickets_aggregate?.aggregate?.count/6)||1)
@@ -179,6 +182,7 @@ const reset=()=>{
     return(
         <Layout title={'Tickets'} dataLogin={dataLogin} setDataLogin={setDataLogin}>
             <ModalCreateTickets reset={reset}  dataLogin={dataLogin} isOpen={isOpen} setIsopen={setIsopen}/>
+            <ModalApprove  reset={reset}  data={dataApprove}  isOpen={isOpenApprove} setIsopen={setIsopenApprove}/>
            <div style={style.backgroundContainer} className="tickets">
                 <div className="tickets-container shadow-md" style={style.backgroundText}>
                     <div className="tickets-header mb-5">
@@ -189,7 +193,7 @@ const reset=()=>{
                             Create
                         </button>
                            <div onClick={()=>setSort(!sort)} className={`${sort?style.sortActive:""} justify-center sort-button cursor-pointer`}> {Icon.sort}
-                            <span>{loading ? "loading":"Sort"}</span>
+                            <span>Sort</span>
                            </div>
                            <Popover>
                                 <PopoverButton className="text-sm/6 font-semibold  mt-1">
@@ -216,7 +220,14 @@ const reset=()=>{
                         </div>
                     </div>
 
-                    <Tabel data={data?.tickets}/>
+                    {loading||loadingPage?
+                        <div className="flex justify-center">
+                            {Icon.loadingXl}
+                        </div>
+                        : <Tabel dataLogin={dataLogin} setDataApprove={setDataApprove} isOpen={isOpenApprove} setIsopen={setIsopenApprove} data={data?.tickets}/> 
+                    }
+                   
+                   
                     <div className="pagination mt-5 flex justify-center">
                         <div className="flex">
                             <div onClick={back}>{`<`}</div>
