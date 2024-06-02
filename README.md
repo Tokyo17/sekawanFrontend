@@ -6,7 +6,7 @@ How to start npm run dev
 
 My [Repo](https://github.com/Tokyo17/sekawanFrontend)
 
-Berikut Link [Demo](https://665bd9ac6690d5e379cfb854--storied-pavlova-331498.netlify.app/) dari technical test React Js Developer
+Berikut Link [Demo](https://665bdc6137abf6e821ca1cb3--sage-swan-9e6a9b.netlify.app/) dari technical test React Js Developer
 
 
 admin:

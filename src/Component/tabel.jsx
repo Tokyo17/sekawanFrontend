@@ -9,9 +9,14 @@ const Tabel=({data,isOpen,setIsopen,setDataApprove,dataLogin})=>{
 
         {data?.map(v=>(
                       
-        <div className="tabel flex mb-5 small-tabel">
+        <div onClick={()=>{
+            if(dataLogin.level=="admin"){
+            setIsopen(true)
+            setDataApprove(v)
+            }
+        }} className="tabel flex mb-5 small-tabel">
             {/* <ModalCreateTickets   isOpen={isOpen} setIsopen={setIsopen}/> */}
-                <div>             
+                <div >             
                      <div className="h-[50px] w-[50px] mr-2.5 rounded-full overflow-hidden flex justify-center items-center">
                             <img className="transform scale-150"  src={v.url} />
                      </div>
